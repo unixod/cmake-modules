@@ -16,6 +16,8 @@ include(CMakeParseArguments)
 function(selectSupportedCXXFlags output)
     cmake_parse_arguments(FLAG "" "" "FIRST_VALID_OF" ${ARGN})
 
+    unset(valid CACHE)
+
     foreach(flag ${FLAG_UNPARSED_ARGUMENTS})
         check_cxx_compiler_flag(${flag} valid)
         if(valid)
