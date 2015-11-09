@@ -10,14 +10,14 @@ include(CMakeParseArguments)
 #                   library names or flags for target_link_libraries invokation.
 #
 # Description:
-# Compailes the test_${file_stem}.cpp to binary ${file_stem}.test
+# Compailes the ${file_stem}.test.cpp to binary ${file_stem}.test
 # and add this binary as test.
 #
 function(addTest test_name file_stem)
     cmake_parse_arguments(DEPS "" "" "LIBS;OBJECT_LIBS" ${ARGN})
 
     set(CPP_SOURCE_FILE_NAME
-        "test_${file_stem}.cpp")
+        "${file_stem}.test.cpp")
 
     set(TEST_FILE_NAME
         "${file_stem}.test")
