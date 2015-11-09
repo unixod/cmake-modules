@@ -19,8 +19,8 @@ function(addTest test_name file_stem)
     set(CPP_SOURCE_FILE_NAME
         "${file_stem}.test.cpp")
 
-    set(TEST_FILE_NAME
-        "${file_stem}.test")
+    get_filename_component(TEST_FILE_NAME ${file_stem} NAME)
+    set(TEST_FILE_NAME "${TEST_FILE_NAME}.test")
 
     add_executable(${TEST_FILE_NAME}
         ${CPP_SOURCE_FILE_NAME}
