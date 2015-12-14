@@ -7,8 +7,10 @@
 # Description:
 # Include directory content for convenience in editing in IDE
 #
-function(showFilesInIDE)
-    string(MD5 TARGET_NAME ${CMAKE_CURRENT_LIST_FILE})
+macro(showFilesInIDE)
+    string(MD5 TMP_TARGET_NAME ${CMAKE_CURRENT_LIST_FILE})
 
-    add_custom_target(${TARGET_NAME} ALL SOURCES ${ARGN})
-endfunction()
+    math(EXPR TMP_TARGETS_COUNTER "0${TMP_TARGETS_COUNTER} + 1")
+    add_custom_target("${TMP_TARGET_NAME}${TMP_TARGETS_COUNTER}" ALL SOURCES ${ARGN})
+endmacro()
+
