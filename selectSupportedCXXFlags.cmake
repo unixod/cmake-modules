@@ -37,3 +37,9 @@ function(selectSupportedCXXFlags output)
 
     set(${output} ${result} PARENT_SCOPE)
 endfunction()
+
+function(selectSupportedCXXFlagsToString output)
+    selectSupportedCXXFlags(result ${ARGN})
+    string(REPLACE ";" " " result "${result}")
+    set(${output} ${result} PARENT_SCOPE)
+endfunction()
