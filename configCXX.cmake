@@ -23,3 +23,13 @@ else()
         -fno-omit-frame-pointer
         -O1)
 endif()
+
+# Enable the eneration of debug symbols under Windows (MSVC), for more details
+# see: https://www.wintellect.com/pdb-files-what-every-developer-must-know/
+if(MSVC)
+    add_compile_options(/Zi)
+
+    # When doing sampling profiling, it might have reason to exchange /OPT:ICF with /OPT:NOICF
+    # for more details see: https://blogs.msdn.microsoft.com/oldnewthing/20050322-00/?p=36113
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /DEBUG /OPT:REF /OPT:ICF")
+endif()
