@@ -10,7 +10,7 @@ macro(precompileCatch target)
     if(NOT TARGET catch.precompiled)
         if (NOT EXISTS ${CMAKE_CURRENT_BINARY_DIR}/catch.precompiled.cpp)
             file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/catch.precompiled.cpp
-                "#define CATCH_CONFIG_MAIN\n#include <catch/single_include/catch.hpp>")
+                "#define CATCH_CONFIG_MAIN\n#include <catch.hpp>")
         endif()
 
         add_library(catch.precompiled OBJECT
