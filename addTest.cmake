@@ -1,18 +1,48 @@
-include(CMakeParseArguments)
-
 #
-# addTest(test_name file_stem [OBJECT_LIBS libs...] [[LIBS] libs...])
+# Copyright (c) 2018 Eldar Zakirov
 #
-# Parameters:
-# test_name     -   test description string
-# file_stem     -   test-file name stem string
-# <<rest_args>> -   all rest, optional arguments are considered as
-#                   library names or flags for target_link_libraries invokation.
+# Dear Reader,
+#
+# This software can be freely used for any purposes that don't go against
+# norms of Islam. Hence, this software shouldn't be used to implement, fix
+# or improve the solutions for riba-based banks and other organizations
+# that are prohibited in Islam.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+#
+# -----------------------------------------------------------------------------
+# A CMake module for the convenient adding unit-tests to a project.
+#
+# Usage:
+#     addTest(test_name file_stem [OBJECT_LIBS deps...] [[LIBS] deps...])
 #
 # Description:
-# Compailes the ${file_stem}.test.cpp to binary ${file_stem}.test
-# and add this binary as test.
 #
+# This module, provides a function for adding (registering) unit-tests to
+# a project using only one line of code.
+#
+# Example of usage:
+#
+#   ---------- CMakeLists.txt ----------
+#
+#   # Add a test with the name 'Foo' which is written in file 'foo.test.cpp'
+#   addTest("Foo" foo)
+#
+#   # Add test 'Bar' which dependes on target 'some_dependency'
+#   addTest("Bar" bar
+#       some_dependency
+#   )
+#
+
+include(CMakeParseArguments)
+
+
 function(addTest test_name file_stem)
     cmake_parse_arguments(DEPS "" "" "LIBS;OBJECT_LIBS" ${ARGN})
 
