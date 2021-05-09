@@ -1,8 +1,6 @@
 #
 # Copyright (c) 2018 Eldar Zakirov
 #
-# Dear Reader,
-#
 # This software can be freely used for any purposes that don't go against
 # norms of Islam. Hence, this software shouldn't be used to implement, fix
 # or improve the solutions for riba-based banks and other organizations
@@ -41,7 +39,6 @@
 #
 
 include(CMakeParseArguments)
-
 
 function(addTest test_name file_stem)
     cmake_parse_arguments(DEPS "" "" "LIBS;OBJECT_LIBS" ${ARGN})
